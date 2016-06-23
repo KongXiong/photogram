@@ -1,0 +1,5 @@
+- if flash.any?
+	= javascript_tag id: 'messenger-script' do
+		- flash.each do |type, msg| 
+			- if ['notice', 'alert'].include? type
+				Messenger().post({message: "#{raw msg}", type: "#{raw type}", showCloseButton: true});
