@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	before_action :find_post, only: [:edit, :update, :show, :delete, :destroy]
 	before_action :authenticate_user!
+	before_action :owned_post, only: [:edit, :update, :destroy]
 
 	def index
 		@posts = Post.all
@@ -10,11 +11,12 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		@post = Post.new
+		@post = current_user.posts.build
 	end
 
 	def create
-		if @post = Post.create(post_params)
+		@post = current_user.posts.build(post_params)
+		if @post.save
 			flash[:success] = "Created new Post"
 			redirect_to posts_path
 		else
@@ -51,5 +53,12 @@ private
 
 	def find_post
 		@post = Post.find(params[:id])
+	end
+
+	def owned_post
+		unless current_user == @post.user
+			flash[:alert] = "That post doesn't belong to you!"
+			redirect_to root_path
+		end
 	end
 end
