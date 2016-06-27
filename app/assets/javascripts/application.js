@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require jquery.turbolinks
 //= require_tree .
-
 $(function() {
    $('.alert').delay(500).fadeIn('normal', function() {
       $(this).delay(2500).fadeOut();

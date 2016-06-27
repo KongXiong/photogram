@@ -15,6 +15,8 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'simple_form'
 gem 'devise', '~> 4.1', '>= 4.1.1'
 # gem 'flash_render'
+gem 'kaminari', '~> 0.16.3' 
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'
