@@ -17,7 +17,7 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 # gem 'flash_render'
 gem 'kaminari', '~> 0.16.3' 
 gem 'jquery-turbolinks'
-
+gem 'acts_as_votable', '~> 0.10.0'
 group :development, :test do
   gem 'byebug'
 end

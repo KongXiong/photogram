@@ -1,0 +1,5 @@
+var heart = $("#unlike_<%= @post.id %>");
+heart.removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+$("#likes_<%= @post.id %>").html("<%= j (render partial: 'posts/likes', locals: { post: @post} ) %>");
+heart.attr("href", "/posts/<%= @post.id %>/like");
+heart.attr("id", "like_<%= @post.id %>");
