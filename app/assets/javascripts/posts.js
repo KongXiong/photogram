@@ -3,5 +3,6 @@ var loadFile = function(event) {
   output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-$('#users').html('<%= escape_javascript render(@users) %>');
-$('#paginator').html('<%= escape_javascript(paginate(@users, :remote => true).to_s) %>');
+$('#posts').append("<%= j (render 'posts')%>");
+$('#paginator').html("<%= j (link_to_next_page(@posts, 'LOAD MORE', remote: true, id: 'load_more'))%>");
+if (!$('#load_more').length) { $('#paginator').remove(); }  

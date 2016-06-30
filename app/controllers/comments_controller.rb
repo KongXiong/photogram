@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :set_post
 
-
 	def index
     	@comments = @post.comments.order("created_at ASC")
 
